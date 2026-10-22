@@ -24,5 +24,5 @@ jobs:
     - name: Run Availability and SLA Check
       run: |
         newman run "LeAnhKhoa_2474802010192_ReqRes.postman_collection.json" \
-          -e "LeAnhKhoa_2474802010192_ReqRes_Env.json" \
+          -e "LeAnhKhoa_2474802010192_ReqRes_Env.postman_environment.json" \
           --folder "Positive_Cases"
