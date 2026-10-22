@@ -1,0 +1,28 @@
+name: API Performance Monitor
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install Newman
+      run: npm install -g newman
+
+    - name: Run Availability and SLA Check
+      run: |
+        newman run "LeAnhKhoa_2474802010192_ReqRes.postman_collection.json" \
+          -e "LeAnhKhoa_2474802010192_ReqRes_Env.json" \
+          --folder "Positive_Cases"
